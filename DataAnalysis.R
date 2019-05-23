@@ -23,11 +23,13 @@ job$jobrate <- c(job$`大學-薪資.y` / job$`大學-薪資.x`)
 job <- arrange(job,
                desc(jobrate))
 #將jobratejob>1在存入job1中
-job1 <- subset(job, job$jobrate > 1)
+job1 <- select(job, '大職業別', jobrate) %>%
+  subset(jobrate > 1)
 #將job1顯示出來
 job1
 #將jobratejob>1.05在存入job2中
-job2 <- subset(job, job$jobrate > 1.05)
+job2 <- select(job, '大職業別', jobrate) %>%
+  subset(jobrate > 1.05)
 #將job2顯示出來
 job2
 #將'大職業別'裡的"-"分開並儲存在str1
@@ -39,47 +41,48 @@ for (i in 1:length(str1)) {
   dtstr[i, 1] <- str1[[i]][1]
 }
 #大職業別的個數
-dtstr
+table(dtstr)
 
 #2
 
 #顯示103年10筆大學-女/男由小到大且小於100的資料
-x103boy <- arrange(X103teach, `大學-女/男`) %>%
+x103boy <- select(X103teach, '大職業別', `大學-女/男`) %>%
+  arrange(`大學-女/男`) %>%
   subset(`大學-女/男` < 100) %>%
   head(10)
 #顯示104年10筆大學-女/男由小到大且小於100的資料
-x104boy <- arrange(X104teach,
-                   `大學-女/男`) %>%
+x104boy <- select(X104teach, '大職業別', `大學-女/男`) %>%
+  arrange(`大學-女/男`) %>%
   subset(`大學-女/男` < 100) %>%
   head(10)
 #顯示105年10筆大學-女/男由小到大且小於100的資料
-x105boy <- arrange(X105teach,
-                   `大學-女/男`) %>%
+x105boy <- select(X105teach, '大職業別', `大學-女/男`) %>%
+  arrange(`大學-女/男`) %>%
   subset(`大學-女/男` < 100) %>%
   head(10)
 #顯示106年10筆大學-女/男由小到大且小於100的資料
-x105boy <- arrange(X106teach,
-                   `大學-女/男`) %>%
+x106boy <- select(X106teach, '大職業別', `大學-女/男`) %>%
+  arrange(`大學-女/男`) %>%
   subset(`大學-女/男` < 100) %>%
   head(10)
 #顯示103年10筆大學-女/男由大到小且大於100的資料
-x103girl <- arrange(X103teach,
-                    desc(`大學-女/男`)) %>%
+x103girl <- select(X103teach, '大職業別', `大學-女/男`) %>%
+  arrange(desc(`大學-女/男`)) %>%
   subset(`大學-女/男` > 100) %>%
   head(10)
 #顯示104年10筆大學-女/男由大到小且大於100的資料
-X104girl <- arrange(X104teach,
-                    desc(`大學-女/男`)) %>%
+x104girl <- select(X104teach, '大職業別', `大學-女/男`) %>%
+  arrange(desc(`大學-女/男`)) %>%
   subset(`大學-女/男` > 100) %>%
   head(10)
 #顯示105年10筆大學-女/男由大到小且大於100的資料
-X105girl <- arrange(X105teach,
-                    desc(`大學-女/男`)) %>%
+x105girl <- select(X105teach, '大職業別', `大學-女/男`) %>%
+  arrange(desc(`大學-女/男`)) %>%
   subset(`大學-女/男` > 100) %>%
   head(10)
 #顯示106年10筆大學-女/男由大到小且大於100的資料
-X106girl <- arrange(X106teach,
-                    desc(`大學-女/男`)) %>%
+x106girl <- select(X106teach, '大職業別', `大學-女/男`) %>%
+  arrange(desc(`大學-女/男`)) %>%
   subset(`大學-女/男` > 100) %>%
   head(10)
 
@@ -96,7 +99,7 @@ head(arrange(salary,
 #篩選"資訊|工業"相關的大職業別，並將T、F加入want的欄位中
 salary$want <- grepl("資訊|工業", salary$`大職業別`)
 #取出為TRUE的大職業別寫入jobwant中
-jobwant <- (salary[salary$want,])
+jobwant <- (salary[salary$want, ])
 #從jobwant取出研究所薪資較多的前5個存入salarywant
 salarywant <- head(arrange(jobwant,
                            desc(`研究所及以上-薪資`)), 5)

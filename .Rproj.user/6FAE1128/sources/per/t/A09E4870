@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1558597842899.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A09E4870",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1558597842899,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "7931CE6F",
+        "caption" : "x103girl",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=x103girl&cache_key=7931CE6F",
+        "displayedObservations" : 0,
+        "environment" : "",
+        "object" : "x103girl",
+        "preview" : 0,
+        "totalObservations" : 0,
+        "variables" : 2
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
